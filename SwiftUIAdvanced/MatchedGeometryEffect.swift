@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct MatchedGeometryEffect: View {
+    
     @State private var isClicked: Bool = false
     @Namespace private var namespaces
+    
+    let categories: [String] = ["Hone", "Popular", "Saved"]
+    @State private var selectedTabs: String = ""
+    @Namespace private var newNameSpaces
     
     var body: some View {
         VStack {
@@ -19,6 +24,29 @@ struct MatchedGeometryEffect: View {
                     .frame(width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
             }
             Spacer()
+            HStack {
+                ForEach(categories, id: \.self) { category in
+                    ZStack(alignment: .bottom) {
+                        if selectedTabs == category {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.red)
+                                .matchedGeometryEffect(id: "categoryBackground", in: newNameSpaces)
+                                .frame(width: 35, height: 2)
+                                .offset(y: 10)
+                        }
+                            Text(category)
+                            .foregroundStyle(selectedTabs == category ? .red : .black)
+                        }
+                    
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 55)
+                    .onTapGesture {
+                        withAnimation(.easeInOut) {
+                            selectedTabs = category
+                        }
+                    }
+                }
+            }
             
             if isClicked {
                 Circle()
@@ -27,7 +55,6 @@ struct MatchedGeometryEffect: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.red)
         .onTapGesture {
             withAnimation(.easeInOut) {
                 isClicked.toggle()
@@ -38,38 +65,6 @@ struct MatchedGeometryEffect: View {
 }
 
 #Preview {
-    MatchedGeometryEffectTwo()
+    MatchedGeometryEffect()
 }
 
-struct MatchedGeometryEffectTwo: View {
-    let categories: [String] = ["Hone", "Popular", "Saved"]
-    @State private var selectedTabs: String = ""
-    @Namespace private var newNameSpaces
-
-    var body: some View {
-        HStack {
-            ForEach(categories, id: \.self) { category in
-                ZStack(alignment: .bottom) {
-                    if selectedTabs == category {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(.red)
-                            .matchedGeometryEffect(id: "categoryBackground", in: newNameSpaces)
-                            .frame(width: 35, height: 2)
-                            .offset(y: 10)
-                    }
-                        Text(category)
-                        .foregroundStyle(selectedTabs == category ? .red : .black)
-                    }
-                
-                .frame(maxWidth: .infinity)
-                .frame(height: 55)
-                .onTapGesture {
-                    withAnimation(.easeInOut) {
-                        selectedTabs = category
-                    }
-                }
-            }
-        }
-        .padding()
-    }
-}
