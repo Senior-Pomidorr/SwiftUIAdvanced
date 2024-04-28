@@ -12,11 +12,12 @@ struct AnimatableDataBootcamp: View {
     var body: some View {
         ZStack {
 //            RoundedRectangle(cornerRadius: animate ? 30 : 0)
-            RectangleSingleCorener(cornedRadius: animate ? 60 : 0)
+            Packman(cornedRadius: animate ? 20 : 0)
                 .frame(width: 260, height: 250)
+                .foregroundColor(.yellow)
         }
         .onAppear {
-            withAnimation(Animation.linear(duration: 2.0).repeatForever()) {
+            withAnimation(Animation.easeInOut.repeatForever()) {
                 animate.toggle()
             }
         }
@@ -45,14 +46,40 @@ struct RectangleSingleCorener: Shape {
             path.addArc(
                 center: CGPoint(x: rect.maxX - cornedRadius, y: rect.maxY - cornedRadius),
                 radius: cornedRadius,
-                startAngle: Angle(degrees: 0),
-                endAngle: Angle(degrees: 360),
+                startAngle: Angle(degrees: cornedRadius),
+                endAngle: Angle(degrees: 360 - cornedRadius),
                 clockwise: false
             )
             
             path.addLine(to: CGPoint(x: rect.maxX - cornedRadius, y: rect.maxY))
             path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
             
+        }
+    }
+}
+
+struct Packman: Shape {
+    
+    var cornedRadius: Double
+    var animatableData: Double {
+        get {
+            cornedRadius
+        }
+        set {
+            cornedRadius = newValue
+        }
+    }
+    
+    func path(in rect: CGRect) -> Path {
+        Path { path in
+            path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+            path.addArc(
+                center: CGPoint(x: rect.midX, y: rect.minY),
+                radius: rect.height / 2,
+                startAngle: Angle(degrees: cornedRadius),
+                endAngle: Angle(degrees: 360 - cornedRadius),
+                clockwise: false
+            )
         }
     }
 }
