@@ -7,12 +7,32 @@
 
 import SwiftUI
 
-struct CustomTabBarContainerView: View {
+struct CustomTabBarContainerView<Content: View> : View {
+    
+    @Binding var selection: TabBarItem
+    let content: Content
+    @State private var tabs: [TabBarItem] = []
+    
+    init(selection: Binding<TabBarItem>, @ViewBuilder content: () -> Content) {
+        self._selection = selection
+        self.content = content()
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: .zero){
+            ZStack {
+                content
+            }
+            CustomTabBarView(tabs: tabs, selection: $selection)
+        }
+        .onPreferenceChange(TabBarItemsPreferenceKeys.self, perform: { value in
+            self.tabs = value
+        })
     }
 }
 
 #Preview {
-    CustomTabBarContainerView()
+    CustomTabBarContainerView(selection: .constant(TabBarItem.previewTabs.first!)) {
+        Color.red
+    }
 }

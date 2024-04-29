@@ -5,6 +5,7 @@
 //  Created by Daniil Kulikovskiy on 4/29/24.
 //
 
+import Foundation
 import SwiftUI
 
 struct TabBarItemsPreferenceKeys: PreferenceKey {
@@ -12,7 +13,7 @@ struct TabBarItemsPreferenceKeys: PreferenceKey {
     static var defaultValue: [TabBarItem] = []
     
     static func reduce(value: inout [TabBarItem], nextValue: () -> [TabBarItem]) {
-        value = nextValue()
+        value += nextValue()
     }
 }
 
