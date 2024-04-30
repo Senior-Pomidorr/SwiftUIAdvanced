@@ -17,6 +17,8 @@ struct TabBarItemsPreferenceKeys: PreferenceKey {
     }
 }
 
+
+// Custom ViewModifier
 struct TabBarItemViewModifier: ViewModifier {
     
     let tab: TabBarItem
@@ -29,6 +31,7 @@ struct TabBarItemViewModifier: ViewModifier {
     }
 }
 
+// Extension for tabBar item
 extension View {
     func tabBarItem(tab: TabBarItem, selection: Binding<TabBarItem>) -> some View {
         self

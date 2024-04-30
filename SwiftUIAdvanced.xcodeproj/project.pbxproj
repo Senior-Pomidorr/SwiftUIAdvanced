@@ -25,6 +25,7 @@
 		0DE9C6E42BE011BE00DF99B0 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C6E32BE011BE00DF99B0 /* CustomTabBarView.swift */; };
 		0DE9C6E62BE01ED400DF99B0 /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C6E52BE01ED400DF99B0 /* CustomTabBarContainerView.swift */; };
 		0DE9C6E82BE0243F00DF99B0 /* TabBarItemsPreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C6E72BE0243F00DF99B0 /* TabBarItemsPreferenceKeys.swift */; };
+		0DE9C6EA2BE17D0E00DF99B0 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C6E92BE17D0E00DF99B0 /* TabBarModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		0DE9C6E32BE011BE00DF99B0 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		0DE9C6E52BE01ED400DF99B0 /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
 		0DE9C6E72BE0243F00DF99B0 /* TabBarItemsPreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKeys.swift; sourceTree = "<group>"; };
+		0DE9C6E92BE17D0E00DF99B0 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		0DE9C6E12BE0104900DF99B0 /* CustomTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				0DE9C6E92BE17D0E00DF99B0 /* TabBarModel.swift */,
 				0DE9C6DF2BE0103F00DF99B0 /* AppTabBarView.swift */,
 				0DE9C6E32BE011BE00DF99B0 /* CustomTabBarView.swift */,
 				0DE9C6E52BE01ED400DF99B0 /* CustomTabBarContainerView.swift */,
@@ -205,6 +208,7 @@
 				0D97388F2BD5448500E84F5F /* SwiftUIAdvancedApp.swift in Sources */,
 				0D9738AB2BDD8EA300E84F5F /* AnimatableDataBootcamp.swift in Sources */,
 				0DE9C6E42BE011BE00DF99B0 /* CustomTabBarView.swift in Sources */,
+				0DE9C6EA2BE17D0E00DF99B0 /* TabBarModel.swift in Sources */,
 				0DE9C6D92BDE8FE100DF99B0 /* ViewBuilderBootcamp.swift in Sources */,
 				0DE9C6D72BDE85C600DF99B0 /* GenericsBootcamp.swift in Sources */,
 				0D9738A52BD7035900E84F5F /* MatchedGeometryEffect.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Custom tabBar container
 struct CustomTabBarContainerView<Content: View> : View {
     
     @Binding var selection: TabBarItem
@@ -19,11 +20,10 @@ struct CustomTabBarContainerView<Content: View> : View {
     }
     
     var body: some View {
-        VStack(spacing: .zero){
-            ZStack {
-                content
-            }
-            CustomTabBarView(tabs: tabs, selection: $selection)
+        ZStack(alignment: .bottom) {
+            content
+                .ignoresSafeArea()
+            CustomTabBarView(tabs: tabs, selection: $selection, localSelection: selection)
         }
         .onPreferenceChange(TabBarItemsPreferenceKeys.self, perform: { value in
             self.tabs = value
